@@ -82,6 +82,85 @@ async function mru(entrada,config2){
     config2)
     .then((response) => response.data);
 }
+async function inverte_string(entrada,config2){
+    return axios
+    .post("https://tecweb-js.insper-comp.com.br/exercicio/inverte-string", { "resposta": entrada.split("").reverse().join("")},
+    config2)
+    .then((response) => response.data);
+}
+async function soma_objeto(objeto,config2){
+    let soma = 0;
+    for (let key in objeto){
+        soma += objeto[key];
+    }
+    return axios
+    .post("https://tecweb-js.insper-comp.com.br/exercicio/soma-valores", { "resposta": soma},
+    config2)
+    .then((response) => response.data);
+}
+async function is_prime(n){
+    if (n == 1){
+        return false;
+    }
+    for (let i = 2; i < n; i++){
+        if (n%i == 0){
+            return false;
+        }
+    }
+    return true;
+}
+async function n_esimo_primo(n,config2){
+    let contador = 0;
+    let resposta = 2;
+    while (contador < n) {
+        if (await is_prime(resposta)) {
+            contador++;
+        }
+        resposta++;
+    }
+    axios
+    .post("https://tecweb-js.insper-comp.com.br/exercicio/n-esimo-primo", { "resposta": resposta-1},
+    config2)
+    .then((response) => response.data);
+}
+async function maior_prefixo_comum(lista,config2){
+    let maior = "";
+    for (let i = 0; i < lista.length - 1; i++) {
+        for (let j = i + 1; j < lista.length; j++) {
+            let prefixo = "";
+            let k = 0;
+            while (k < lista[i].length && k < lista[j].length && lista[i][k] === lista[j][k]) {
+                prefixo += lista[i][k];
+                k++;
+            }
+            if (prefixo.length > maior.length) {
+                maior = prefixo;
+            }
+        }
+    }
+        return axios
+            .post("https://tecweb-js.insper-comp.com.br/exercicio/maior-prefixo-comum", { "resposta": maior },
+                config2)
+            .then((response) => response.data);
+    }
+async function soma_segundo_maior_e_menor(lista,config2){
+    lista.sort((a, b) => a - b);
+    let resposta = 0;
+    if (lista.length>2){
+        resposta = lista[1] + lista[lista.length-2];
+    }
+    else if (lista.length==2){
+        resposta = lista[0] + lista[1];
+    }
+    else{
+        resposta = lista[0];
+    }
+    return axios
+    .post("https://tecweb-js.insper-comp.com.br/exercicio/soma-segundo-maior-e-menor-numeros", { "resposta": resposta},
+    config2)
+    .then((response) => response.data);
+
+}
 
 
 async function main(){
@@ -102,6 +181,11 @@ async function main(){
     let ano_bissexto_dois = await ano_bissexto(exercises["ano-bissexto"].entrada.ano,config2);
     let volume_pizza_dois = await volume_pizza(exercises["volume-da-pizza"].entrada,config2);
     let mru_dois = await mru(exercises.mru.entrada,config2);
+    let inverte_string_dois = await inverte_string(exercises["inverte-string"].entrada.string,config2);
+    let soma_objeto_dois = await soma_objeto(exercises["soma-valores"].entrada.objeto,config2);
+    let n_esimo_primo_dois = await n_esimo_primo(exercises["n-esimo-primo"].entrada.n,config2);
+    let maior_prefixo_comum_dois = await maior_prefixo_comum(exercises["maior-prefixo-comum"].entrada.strings,config2);
+    let soma_segundo_maior_e_menor_dois = await soma_segundo_maior_e_menor(exercises["soma-segundo-maior-e-menor-numeros"].entrada.numeros,config2);
     console.log(soma_dois);
     console.log(tamanho_string_dois);
     console.log(nome_usuario_dois);
@@ -109,6 +193,11 @@ async function main(){
     console.log(ano_bissexto_dois);
     console.log(volume_pizza_dois);
     console.log(mru_dois);
+    console.log(inverte_string_dois);
+    console.log(soma_objeto_dois);
+    console.log(n_esimo_primo_dois);
+    console.log(maior_prefixo_comum_dois);
+    console.log(soma_segundo_maior_e_menor_dois);
 }
 
 
