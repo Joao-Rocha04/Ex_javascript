@@ -204,7 +204,6 @@ async function caca_ao_tesouro(resposta,config2){
         resposta = await axios
             .get(resposta, config)
             .then((response) => response.data);
-        console.log(resposta);
     }
     return axios
     .post("https://tecweb-js.insper-comp.com.br/exercicio/caca-ao-tesouro", { "resposta": resposta},
