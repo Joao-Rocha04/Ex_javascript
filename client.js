@@ -161,6 +161,56 @@ async function soma_segundo_maior_e_menor(lista,config2){
     .then((response) => response.data);
 
 }
+async function palindromo(palavra){
+    return palavra === palavra.split("").reverse().join("");
+}
+async function conta_palindromos(lista,config2){
+    let contador = 0;
+    for (let i = 0; i < lista.length; i++){
+        if (await palindromo(lista[i])){
+            contador++;
+        }
+    }
+    return axios
+    .post("https://tecweb-js.insper-comp.com.br/exercicio/conta-palindromos", { "resposta": contador},
+    config2)
+    .then((response) => response.data);
+}
+async function soma_strings_de_ints(lista,config2){
+    let lista_int = lista.map(x => parseInt(x));
+    let soma = lista_int.reduce(function (a,b){
+        return a + b;
+    },0);
+    return axios
+    .post("https://tecweb-js.insper-comp.com.br/exercicio/soma-de-strings-de-ints", { "resposta": soma},
+    config2)
+    .then((response) => response.data);
+}
+async function soma_com_requisicoes(lista,config2){
+    let soma = 0;
+    for (let i = 0; i < lista.length; i++){
+        let resposta = await axios
+        .get(lista[i],config)
+        .then((response) => response.data);
+        soma += resposta;
+    }
+    return axios
+    .post("https://tecweb-js.insper-comp.com.br/exercicio/soma-com-requisicoes", { "resposta": soma},
+    config2)
+    .then((response) => response.data);
+}
+async function caca_ao_tesouro(resposta,config2){
+    while (typeof resposta !== "number") {
+        resposta = await axios
+            .get(resposta, config)
+            .then((response) => response.data);
+        console.log(resposta);
+    }
+    return axios
+    .post("https://tecweb-js.insper-comp.com.br/exercicio/caca-ao-tesouro", { "resposta": resposta},
+    config2)
+    .then((response) => response.data);
+}
 
 
 async function main(){
@@ -186,6 +236,10 @@ async function main(){
     let n_esimo_primo_dois = await n_esimo_primo(exercises["n-esimo-primo"].entrada.n,config2);
     let maior_prefixo_comum_dois = await maior_prefixo_comum(exercises["maior-prefixo-comum"].entrada.strings,config2);
     let soma_segundo_maior_e_menor_dois = await soma_segundo_maior_e_menor(exercises["soma-segundo-maior-e-menor-numeros"].entrada.numeros,config2);
+    let conta_palindromos_dois = await conta_palindromos(exercises["conta-palindromos"].entrada.palavras,config2);
+    let soma_strings_de_ints_dois = await soma_strings_de_ints(exercises["soma-de-strings-de-ints"].entrada.strings,config2);
+    let soma_com_requisicoes_dois = await soma_com_requisicoes(exercises["soma-com-requisicoes"].entrada.endpoints,config2);
+    let caca_ao_tesouro_dois = await caca_ao_tesouro(exercises["caca-ao-tesouro"].entrada.inicio,config2);
     console.log(soma_dois);
     console.log(tamanho_string_dois);
     console.log(nome_usuario_dois);
@@ -198,6 +252,10 @@ async function main(){
     console.log(n_esimo_primo_dois);
     console.log(maior_prefixo_comum_dois);
     console.log(soma_segundo_maior_e_menor_dois);
+    console.log(conta_palindromos_dois);
+    console.log(soma_strings_de_ints_dois);
+    console.log(soma_com_requisicoes_dois);
+    console.log(caca_ao_tesouro_dois);
 }
 
 
