@@ -165,6 +165,7 @@ async function palindromo(palavra){
     return palavra === palavra.split("").reverse().join("");
 }
 async function conta_palindromos(lista,config2){
+ 
     let contador = 0;
     for (let i = 0; i < lista.length; i++){
         if (await palindromo(lista[i])){
@@ -224,36 +225,40 @@ async function main(){
     }
     console.log(exercises);
     let soma_dois = await soma(exercises.soma.entrada.a,exercises.soma.entrada.b,config2);
-    let tamanho_string_dois = await tamanho_string(exercises["tamanho-string"].entrada.string,config2);
-    let nome_usuario_dois = await nome_usuario(exercises["nome-do-usuario"].entrada.email,config2);
-    let jaca_wars_dois = await jaca_wars(exercises["jaca-wars"].entrada,config2);
-    let ano_bissexto_dois = await ano_bissexto(exercises["ano-bissexto"].entrada.ano,config2);
-    let volume_pizza_dois = await volume_pizza(exercises["volume-da-pizza"].entrada,config2);
-    let mru_dois = await mru(exercises.mru.entrada,config2);
-    let inverte_string_dois = await inverte_string(exercises["inverte-string"].entrada.string,config2);
-    let soma_objeto_dois = await soma_objeto(exercises["soma-valores"].entrada.objeto,config2);
-    let n_esimo_primo_dois = await n_esimo_primo(exercises["n-esimo-primo"].entrada.n,config2);
-    let maior_prefixo_comum_dois = await maior_prefixo_comum(exercises["maior-prefixo-comum"].entrada.strings,config2);
-    let soma_segundo_maior_e_menor_dois = await soma_segundo_maior_e_menor(exercises["soma-segundo-maior-e-menor-numeros"].entrada.numeros,config2);
-    let conta_palindromos_dois = await conta_palindromos(exercises["conta-palindromos"].entrada.palavras,config2);
-    let soma_strings_de_ints_dois = await soma_strings_de_ints(exercises["soma-de-strings-de-ints"].entrada.strings,config2);
-    let soma_com_requisicoes_dois = await soma_com_requisicoes(exercises["soma-com-requisicoes"].entrada.endpoints,config2);
-    let caca_ao_tesouro_dois = await caca_ao_tesouro(exercises["caca-ao-tesouro"].entrada.inicio,config2);
     console.log(soma_dois);
+    let tamanho_string_dois = await tamanho_string(exercises["tamanho-string"].entrada.string,config2);
     console.log(tamanho_string_dois);
+    let nome_usuario_dois = await nome_usuario(exercises["nome-do-usuario"].entrada.email,config2);
     console.log(nome_usuario_dois);
+    let jaca_wars_dois = await jaca_wars(exercises["jaca-wars"].entrada,config2);
     console.log(jaca_wars_dois);
+    let ano_bissexto_dois = await ano_bissexto(exercises["ano-bissexto"].entrada.ano,config2);
     console.log(ano_bissexto_dois);
+    let volume_pizza_dois = await volume_pizza(exercises["volume-da-pizza"].entrada,config2);
     console.log(volume_pizza_dois);
+    let mru_dois = await mru(exercises.mru.entrada,config2);
     console.log(mru_dois);
+    let inverte_string_dois = await inverte_string(exercises["inverte-string"].entrada.string,config2);
     console.log(inverte_string_dois);
+    let soma_objeto_dois = await soma_objeto(exercises["soma-valores"].entrada.objeto,config2);
     console.log(soma_objeto_dois);
+    let n_esimo_primo_dois = await n_esimo_primo(exercises["n-esimo-primo"].entrada.n,config2);
     console.log(n_esimo_primo_dois);
+    let maior_prefixo_comum_dois = await maior_prefixo_comum(exercises["maior-prefixo-comum"].entrada.strings,config2);
     console.log(maior_prefixo_comum_dois);
+    let soma_segundo_maior_e_menor_dois = await soma_segundo_maior_e_menor(exercises["soma-segundo-maior-e-menor-numeros"].entrada.numeros,config2);
     console.log(soma_segundo_maior_e_menor_dois);
+    let conta_palindromos_dois = await conta_palindromos(exercises["conta-palindromos"].entrada.palavras,config2);
+    console.log('palindromo');
     console.log(conta_palindromos_dois);
+    let soma_strings_de_ints_dois = await soma_strings_de_ints(exercises["soma-de-strings-de-ints"].entrada.strings,config2);
+    console.log('soma strings')
     console.log(soma_strings_de_ints_dois);
+    let soma_com_requisicoes_dois = await soma_com_requisicoes(exercises["soma-com-requisicoes"].entrada.endpoints,config2);
+    console.log('soma requisicoes')
     console.log(soma_com_requisicoes_dois);
+    let caca_ao_tesouro_dois = await caca_ao_tesouro(exercises["caca-ao-tesouro"].entrada.inicio,config2);
+    console.log('caca ao tesouro')
     console.log(caca_ao_tesouro_dois);
 }
 
